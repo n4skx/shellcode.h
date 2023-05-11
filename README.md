@@ -1,5 +1,5 @@
 # shellcode.h
-Simple library (std indepent) to "download" a shellcode from a remote/local HTTP(s) server
+Simple library (std indepent) to "download" a shellcode from a remote/local HTTP(s) server. Could be tested with: Mingw and Visual Studio.
 
 # Quickstart
 ```c
