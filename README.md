@@ -38,3 +38,9 @@ int main(void)
     } 
 }
 ```
+
+# Compiling
+```
+PS > gcc main.c -o main -lwininet
+PS > .\main.exe
+```
